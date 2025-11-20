@@ -51,7 +51,7 @@ I seguenti documenti interni sono direttamente collegati al presente SOP:
 
 - **SOP-CRM-01 – Lead generation e gestione opportunità su Odoo**
 - **SOP-PRJ-01 – Gestione progetti e metodologia Scrum multi-progetto su Odoo**
-- **SOP-DOC-01 – Gestione documentale integrata Odoo / Google Drive**
+- **SOP-DOC-01 – Modello integrato di gestione documentale (Odoo / Google Drive / GitHub)**
 - **SOP-ACC-01 – Gestione contabile e tesoreria su Odoo**
 - **SOP-KB-01 – Knowledge Base Odoo e collegamento alla documentazione esterna**
 - **SOP-MKT-01 – Immagine, comunicazione e gestione dei canali marketing**
