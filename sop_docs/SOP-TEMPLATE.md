@@ -220,7 +220,7 @@ Esempi:
 - **Allegato 3 – Template di checklist di controllo**
 - **Allegato 4 – Modello di report / registro**
 
-> Nota: indicare sempre dove sono archiviati gli allegati (stesso repository, cartella dedicata, ecc.).
+> Per la scelta e la classificazione degli allegati da associare a questo SOP, fare riferimento al documento **"Catalogo allegati standard per i SOP aziendali" ([SOP-ALLEGATI-STANDARD.md](./SOP-ALLEGATI-STANDARD.md))**.
 
 ---
 
