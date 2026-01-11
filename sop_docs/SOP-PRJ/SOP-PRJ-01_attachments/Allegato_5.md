@@ -1,3 +1,26 @@
+# Allegato 5 — Template ufficiale “Descrizione Progetto standardizzata” (Odoo > Progetto > Campo “Descrizione”)
+
+## Scopo
+Questo template standardizza la **Descrizione del Progetto** in Odoo per:
+- rendere immediatamente comprensibili **contesto, obiettivi, scope**;
+- definire chiaramente **setup Scrum**, governance e regole di qualità (DoD);
+- centralizzare **link** a Drive, repository documentale, KB e documenti chiave;
+- supportare onboarding rapido e audit/controlli.
+
+## Utilizzo (come si usa)
+1. **Copia/incolla** il template nel campo **Descrizione** del Progetto Odoo.
+2. Compila i campi `{{...}}` con le informazioni reali del progetto.
+3. Mantieni la struttura: puoi estendere, ma **non rimuovere** le sezioni minime.
+4. Se viene usata la colonna **BLOCKED** nella board:
+   - sposta in **BLOCKED** le card ferme per dipendenze/impedimenti;
+   - traccia il motivo in: **Dipendenze** e/o **Note / rischi** nelle card;
+   - nel progetto, tieni aggiornate le dipendenze critiche in §4.
+
+---
+
+## TEMPLATE (da clonare/incollare in Odoo)
+
+~~~text
 # Descrizione Progetto
 
 ## 1. Descrizione generale
@@ -63,6 +86,37 @@
 
 > Eventuali cerimonie aggiuntive (es. refinement dedicati) possono essere annotate qui:  
 > **Altro:** {{eventuali meeting di refinement, allineamenti extra, cerimonie custom}}
+
+### 2.2 Board Odoo: fasi e significato (OBBLIGATORIO)
+
+- **BACKLOG**
+  - Significato: elementi noti ma non ancora pronti/assegnati.
+  - Regola ingresso: descrizione compilata; se tecnico indicare prossimo step (analisi/ticket/spike).
+
+- **ASSIGNED**
+  - Significato: pronto e assegnato (owner/team definito).
+  - Prerequisiti: requisiti chiari, dipendenze note, priorità definita; se tecnico issue GitLab creata o da creare subito.
+
+- **IN PROGRESS**
+  - Significato: lavoro attivo in corso.
+  - Regola: aggiornare note/blocchi; se tecnico tracciamento su GitLab (issue/MR/CI).
+
+- **BLOCKED** (se presente nel board)
+  - Significato: card **ferma** per impedimenti esterni o dipendenze.
+  - Regola: indicare chiaramente **cosa blocca** e **azione/owner per sbloccare** in “Dipendenze” e/o “Note / rischi”.
+  - Uscita: rimuovere impedimento → tornare in ASSIGNED o IN PROGRESS.
+
+- **DONE**
+  - Significato: completato e verificato.
+  - Regola uscita: DoD rispettata; se tecnico issue chiusa + link MR/commit + doc/Drive aggiornati se necessario.
+
+### 2.3 Definition of Done (DoD) di progetto (OBBLIGATORIO)
+
+- [ ] Criteri di accettazione soddisfatti / validazione eseguita
+- [ ] Evidenze presenti (note, screenshot, link, verbale, output)
+- [ ] Documentazione aggiornata se impatta utenti/operatività
+- [ ] (Se tecnico) Ticket GitLab chiuso + MR/commit collegati
+- [ ] (Se tecnico) Test/CI OK oppure motivazione documentata
 
 ---
 
@@ -147,4 +201,5 @@
 
 - **{{yyyy-mm-dd}} – {{NOME}} –** {{Aggiornamento iniziale descrizione progetto}}  
 - **{{yyyy-mm-dd}} – {{NOME}} –** {{Aggiornata sezione Setup Scrum (durata Sprint, Daily, ecc.)}}  
-- **{{yyyy-mm-dd}} – {{NOME}} –** {{Aggiornati link a Drive / repo / GitHub Pages / KB}}  
+- **{{yyyy-mm-dd}} – {{NOME}} –** {{Aggiornati link a Drive / repo / GitHub Pages / KB}}
+~~~

@@ -128,8 +128,27 @@ All’interno di ogni cartella progetto (es. `03_PROGETTI/Versalis - Digital Twi
 ├── 07_DATI_E_ALLEGATI
 ├── 08_RILASCI_E_DEPLOYMENT
 ├── 09_LINK_RIFERIMENTI
+├── 98_INBOX_DA_CLASSIFICARE
 └── 99_ARCHIVIO
 ```
+
+### 6.0 98_INBOX_DA_CLASSIFICARE (OBBLIGATORIA)
+**Scopo:** cartella “buffer” per materiale *temporaneo* o *non ancora correttamente archiviato* nelle cartelle standard (00–09).
+
+**Regole operative:**
+- Si usa quando **non si è sicuri** della collocazione corretta, oppure quando si raccolgono rapidamente file durante workshop, call, scambi con cliente.
+- **Non deve mai diventare un archivio definitivo**: va svuotata con cadenza regolare (consigliato: **settimanale** o a fine Sprint).
+- In chiusura progetto, `98_INBOX_DA_CLASSIFICARE` deve essere **vuota** o contenere solo materiale *esplicitamente marcato* come non rilevante e destinato a scarto (previa valutazione PM/Owner).
+
+**Esempi di file che possono transitare in INBOX (temporaneamente):**
+- screenshot ricevuti in chat/email non ancora classificati;
+- export “al volo” (CSV/XLSX) che poi andrà in `07_DATI_E_ALLEGATI`;
+- bozze di note meeting che poi andranno in `05_MEETING_E_COMUNICAZIONI`;
+- allegati cliente da distribuire correttamente tra `02`, `07`, `04`.
+
+> Nota: la presenza di INBOX non sostituisce le regole di §3.2 (eccezioni). Se il documento “vive” altrove (es. `02_COMMERCIALE`, `08_LEGALE_COMPLIANCE`), in progetto si mantiene **solo link** in `09_LINK_RIFERIMENTI`.
+
+---
 
 ### 6.1 00_ADMIN_E_GOVERNANCE
 Contenuti tipici:
@@ -137,17 +156,46 @@ Contenuti tipici:
 - decision log alto livello, registro rischi (se non in tool dedicati);
 - documenti di “governo” del progetto.
 
+**Tipologie file (esempi):**
+- `YYYY-MM-DD__MEET__Kickoff__FINAL__v1.docx`
+- `YYYY-MM-DD__PLAN__Project_Charter__FINAL__v1.0.pdf`
+- `YYYY-MM-DD__PLAN__Scope_Operativo__IN-REVIEW__v2.docx`
+- `YYYY-MM-DD__PLAN__Stakeholder_Map__FINAL__v1.xlsx`
+- `YYYY-MM-DD__PLAN__Risk_Log__IN-REVIEW__v3.xlsx`
+- `DEC-YYYY-###__Decisione__Titolo__v1.md` (se usate decision log / ADR)
+
+---
+
 ### 6.2 01_PIANIFICAZIONE_E_CONTROLLO
 Contenuti tipici:
 - piani di lavoro, roadmap, WBS, Gantt, baseline;
 - report avanzamento, SAL, timesheet export (se usato operativamente);
 - planning sprint (se non nel tool di gestione).
 
+**Tipologie file (esempi):**
+- `YYYY-MM-DD__PLAN__Roadmap__FINAL__v1.xlsx`
+- `YYYY-MM-DD__PLAN__WBS__IN-REVIEW__v2.xlsx`
+- `YYYY-MM-DD__PLAN__Gantt__FINAL__v1.mpp` (o `.pdf`/`.xlsx`)
+- `YYYY-MM-DD__DELIV__Report_Avanzamento_SAL1__FINAL__v1.0.pdf`
+- `YYYY-MM-DD__PLAN__Capacity_Plan__DRAFT__v1.xlsx`
+- `YYYY-MM-DD__PLAN__Sprint_Planning_Sprint_2026-01-A__FINAL__v1.md`
+
+---
+
 ### 6.3 02_ANALISI_E_REQUISITI
 Contenuti tipici:
 - requisiti, workshop notes, verbali analisi;
 - specifiche funzionali di progetto;
 - backlog export (se serve per consegna/archivio).
+
+**Tipologie file (esempi):**
+- `YYYY-MM-DD__REQ__Workshop_Notes__v1.docx` (o `.md`)
+- `YYYY-MM-DD__REQ__Requisiti_Funzionali__IN-REVIEW__v2.docx`
+- `YYYY-MM-DD__REQ__Specifiche_Tecniche_Integrazioni__FINAL__v1.pdf`
+- `YYYY-MM-DD__REQ__Mockup_UX__v1.pptx` (o link esterno in `09`)
+- `YYYY-MM-DD__DATA__Backlog_Export__FINAL__v1.xlsx`
+
+---
 
 ### 6.4 03_TECNICO_E_SVILUPPO
 Contenuti tipici:
@@ -157,11 +205,28 @@ Contenuti tipici:
 
 > Nota: codice sorgente e documentazione “as-code” rimangono nei repo (GitHub/GitLab). Qui si archivia solo ciò che è necessario come documentazione di progetto o consegna.
 
+**Tipologie file (esempi):**
+- `YYYY-MM-DD__TECH__Architettura_Sistema__FINAL__v1.0.pdf`
+- `YYYY-MM-DD__TECH__API_Spec__IN-REVIEW__v3.docx` (o `.yaml` se autorizzato)
+- `YYYY-MM-DD__TECH__Integrazione_<Sistema>__FINAL__v1.md`
+- `YYYY-MM-DD__TECH__Config_Ambienti__FINAL__v1.md` *(senza segreti/credenziali)*
+- `YYYY-MM-DD__TECH__Note_Tecniche__v1.md`
+
+---
+
 ### 6.5 04_DELIVERABLE_E_CONSEGNE
 Contenuti tipici:
 - deliverable ufficiali (report, documenti, presentazioni, manuali consegnati);
 - pacchetti consegna, versioni finali;
 - materiale cliente “finale”.
+
+**Tipologie file (esempi):**
+- `DELIV__Manuale_Utente__v1.0__2026-03-01.pdf`
+- `DELIV__Report_Test_UAT__v1.1__2026-03-15.pdf`
+- `DELIV__Presentazione_Review_Sprint_2026-01-A__v1__2026-01-26.pptx`
+- `YYYY-MM-DD__DELIV__Documento_Consegna__FINAL__v1.0.pdf`
+
+---
 
 ### 6.6 05_MEETING_E_COMUNICAZIONI
 Contenuti tipici:
@@ -169,10 +234,27 @@ Contenuti tipici:
 - comunicazioni operative rilevanti (estratti email se necessario, preferire link);
 - decision log operativo.
 
+**Tipologie file (esempi):**
+- `YYYY-MM-DD__MEET__Allineamento_Tecnico__v1.docx`
+- `YYYY-MM-DD__MEET__Steering_Committee__FINAL__v1.pdf`
+- `YYYY-MM-DD__MEET__Daily_Notes_Week_2026-02-03__v1.md`
+- `YYYY-MM-DD__MEET__Decision_Log_Operativo__v1.xlsx` (se non in 00)
+
+---
+
 ### 6.7 06_TEST_COLLAUDI_EVIDENZE
 Contenuti tipici:
 - piani di test, UAT, evidenze collaudo, report bug (export);
 - checklist qualità/done criteria specifici.
+
+**Tipologie file (esempi):**
+- `YYYY-MM-DD__TEST__Test_Plan__FINAL__v1.md` (o `.docx`)
+- `YYYY-MM-DD__TEST__Test_Cases__IN-REVIEW__v2.xlsx`
+- `YYYY-MM-DD__TEST__UAT_Report__FINAL__v1.0.pdf`
+- `YYYY-MM-DD__TEST__Evidenza_UAT_Login_OK__v1.png`
+- `YYYY-MM-DD__TEST__Bug_Report_Export__FINAL__v1.xlsx`
+
+---
 
 ### 6.8 07_DATI_E_ALLEGATI
 Contenuti tipici:
@@ -181,10 +263,27 @@ Contenuti tipici:
 
 > Attenzione: dati personali o sensibili vanno gestiti secondo GDPR/policy e con permessi adeguati.
 
+**Tipologie file (esempi):**
+- `YYYY-MM-DD__DATA__Export_Ordini__v1.csv`
+- `YYYY-MM-DD__DATA__Dataset_Training__v1.zip`
+- `YYYY-MM-DD__DATA__Allegati_Cliente__v1.zip`
+- `YYYY-MM-DD__DATA__Tracciato_Integrazione__v2.xlsx`
+- `YYYY-MM-DD__DATA__Immagini_Materiali__v1.zip`
+
+---
+
 ### 6.9 08_RILASCI_E_DEPLOYMENT
 Contenuti tipici:
 - note di rilascio, checklist deployment, piani di migrazione specifici;
 - configurazioni di rilascio (solo se autorizzato; segreti/credenziali non vanno mai in Drive).
+
+**Tipologie file (esempi):**
+- `YYYY-MM-DD__REL__Release_Notes_R1__FINAL__v1.md`
+- `YYYY-MM-DD__REL__Checklist_Deploy__FINAL__v1.xlsx`
+- `YYYY-MM-DD__REL__Piano_Migrazione__IN-REVIEW__v2.docx`
+- `YYYY-MM-DD__REL__Rollback_Plan__FINAL__v1.md`
+
+---
 
 ### 6.10 09_LINK_RIFERIMENTI
 File `.md`/`.txt` con link a:
@@ -193,8 +292,82 @@ File `.md`/`.txt` con link a:
 - documenti amministrativi in `07_AMMINISTRAZIONE_FINANZA` (se pertinenti);
 - repository GitHub/GitLab, board, ticketing, ambienti, KB Odoo.
 
+**Tipologie file (esempi):**
+- `00_LINKS_PRINCIPALI.md` (con: Odoo project, repo docs, repo code, Drive root, KB)
+- `01_Link_Commerciale_Legale_Amministrazione.md`
+- `02_Link_Repo_Ambienti_KB.md`
+
+---
+
 ### 6.11 99_ARCHIVIO
 Materiale superato/obsoleto, versioni non più valide, o contenuti da conservare ma non “operativi”.
+
+**Tipologie file (esempi):**
+- versioni precedenti dei documenti (se non gestite altrove);
+- bozze obsolete non più utili operativamente;
+- export storici.
+
+---
+
+## 6-bis. Gestione per Sprint (sottocartelle Sprint) — CONSIGLIATA quando si usa Scrum
+
+Quando il progetto è gestito a Sprint (in Odoo: campo Sprint su Story/Task), è consigliato raggruppare parte della documentazione per Sprint tramite **sottocartelle Sprint** *all’interno delle cartelle standard esistenti* (senza modificare la struttura principale 00–09).
+
+### 6-bis.1 Regola
+- Le sottocartelle Sprint si creano **solo** dentro cartelle dove la segmentazione temporale ha senso, tipicamente:
+  - `01_PIANIFICAZIONE_E_CONTROLLO`
+  - `05_MEETING_E_COMUNICAZIONI`
+  - `06_TEST_COLLAUDI_EVIDENZE`
+  - `08_RILASCI_E_DEPLOYMENT`
+  - (opzionale) `04_DELIVERABLE_E_CONSEGNE` se si consegna per Sprint
+
+### 6-bis.2 Naming sottocartella Sprint (consigliato)
+Formato coerente con Odoo:
+- `Sprint_YYYY-XX-A` (es. `Sprint_2026-01-A`)
+- oppure `Sprint_YYYY-XX-B`, ecc.
+
+> Importante: usare lo **stesso identificativo Sprint** presente nelle card Odoo (campo Sprint), per rendere immediata la tracciabilità.
+
+### 6-bis.3 Cosa mettere nelle sottocartelle Sprint (esempi concreti)
+
+#### Dentro `01_PIANIFICAZIONE_E_CONTROLLO/Sprint_2026-01-A/`
+- Sprint Planning (agenda + note + output)
+- snapshot di backlog/commitment (se esportato)
+- SAL di Sprint (se prodotto)
+- Esempi:
+  - `2026-01-12__PLAN__Sprint_Planning_Sprint_2026-01-A__FINAL__v1.md`
+  - `2026-01-12__PLAN__Commitment_Backlog_Sprint_2026-01-A__FINAL__v1.xlsx`
+  - `2026-01-26__DELIV__SAL_Sprint_2026-01-A__FINAL__v1.pdf`
+
+#### Dentro `05_MEETING_E_COMUNICAZIONI/Sprint_2026-01-A/`
+- verbali review/retro, minute meeting rilevanti, comunicazioni operative di Sprint
+- Esempi:
+  - `2026-01-26__MEET__Sprint_Review_Sprint_2026-01-A__FINAL__v1.docx`
+  - `2026-01-26__MEET__Sprint_Retro_Sprint_2026-01-A__FINAL__v1.docx`
+  - `2026-01-18__MEET__Allineamento_Tecnico__v1.docx`
+
+#### Dentro `06_TEST_COLLAUDI_EVIDENZE/Sprint_2026-01-A/`
+- evidenze UAT/test della iterazione, report test di Sprint, bug export di Sprint
+- Esempi:
+  - `2026-01-24__TEST__UAT_Report_Sprint_2026-01-A__FINAL__v1.pdf`
+  - `2026-01-24__TEST__Evidenza_UAT_Login_OK__v1.png`
+  - `2026-01-25__TEST__Bug_Report_Export_Sprint_2026-01-A__FINAL__v1.xlsx`
+
+#### Dentro `08_RILASCI_E_DEPLOYMENT/Sprint_2026-01-A/`
+- release note della iterazione, checklist deploy, piano migrazione/rollback se applicabile
+- Esempi:
+  - `2026-01-26__REL__Release_Notes_Sprint_2026-01-A__FINAL__v1.md`
+  - `2026-01-26__REL__Checklist_Deploy_Sprint_2026-01-A__FINAL__v1.xlsx`
+
+#### (Opzionale) Dentro `04_DELIVERABLE_E_CONSEGNE/Sprint_2026-01-A/`
+- solo se consegnate “pacchetti” per Sprint
+- Esempi:
+  - `DELIV__Report_Sprint_2026-01-A__v1.0__2026-01-26.pdf`
+  - `DELIV__Presentazione_Review_Sprint_2026-01-A__v1__2026-01-26.pptx`
+
+### 6-bis.4 Regola anti-duplicazione
+- I file “di Sprint” devono vivere **in una sola cartella** (quella dello Sprint) e non duplicati altrove.
+- Se un documento è “trasversale” al progetto (es. architettura), resta nella cartella standard (es. `03_TECNICO_E_SVILUPPO`) e nelle cartelle Sprint si mette **solo un link** (in un `.md`) se necessario.
 
 ---
 
@@ -249,6 +422,7 @@ Alla chiusura progetto:
 - consolidare deliverable finali in `04_DELIVERABLE_E_CONSEGNE`;
 - spostare la cartella progetto in `03_PROGETTI/99_ARCHIVIO` mantenendo il nome;
 - garantire che i link in `09_LINK_RIFERIMENTI` restino validi.
+- assicurarsi che `98_INBOX_DA_CLASSIFICARE` sia **vuota** (o che i contenuti siano correttamente ricollocati).
 
 ---
 
@@ -267,5 +441,5 @@ Alla chiusura progetto:
 ## 10. Note di sicurezza (obbligatorie)
 
 - **Credenziali, token, chiavi, segreti**: non devono mai essere salvati in Drive.  
-- Dati personali/sensibili: gestire secondo GDPR e policy interne; usare permessi restrittivi e minimizzazione.  
+- Dati personali/sensibili: gestire secondo GDPR/policy interne; usare permessi restrittivi e minimizzazione.  
 - Documenti contrattuali firmati: fonte di verità in `08_LEGALE_COMPLIANCE`, non duplicare senza necessità.

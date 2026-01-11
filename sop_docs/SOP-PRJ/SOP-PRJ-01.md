@@ -1,4 +1,4 @@
-# SOP-PRJ-01 – Gestione progetti e metodologia Scrum multi-progetto su Odoo
+_# SOP-PRJ-01 – Gestione progetti e metodologia Scrum multi-progetto su Odoo
 
 ---
 
@@ -39,6 +39,9 @@ Il presente SOP definisce in modo standard:
 
   * meta-informazioni Scrum (durata Sprint, Scrum Master, frequenza dei Daily, ecc.);
   * riferimenti a documentazione (GitHub Pages, KB Odoo, cartelle Google Drive);
+* la standardizzazione del **campo “Descrizione” delle card** (task) in Odoo tramite template ufficiali per tipologia:
+  * [PROJECT], [EPIC], [STORY], [TASK], [BUG], [FIX];
+  * ogni template definisce i campi minimi (Descrizione breve/dettagliata, DoD, evidenze, link, e GitLab dove applicabile);
 * l’**obbligo di associare a ogni progetto** un **Documento di Progetto** (interno o esterno) redatto secondo i template ufficiali allegati al presente SOP.
 
 ### Campo di applicazione
@@ -113,6 +116,14 @@ Sono esclusi da questo documento:
   * **Documento di Progetto – Progetto Interno** – Versione del template usata per progetti interni.
 * **Repository documentale di progetto (repo principale)** – Repository Git (es. su GitHub/GitLab) dedicato alla **documentazione di progetto** (non al codice sorgente), creato in modo standard per ogni progetto.
 * **Cartella Drive di progetto** – Cartella principale su Google Drive associata a ogni progetto, che contiene documenti operativi, allegati, esportazioni, output, ecc.
+* **Descrizione Card standardizzata** – Testo nel campo “Descrizione” della singola card Odoo (PROJECT/EPIC/STORY/TASK/BUG/FIX) compilato secondo i template allegati (Allegati 6–11).
+* **Descrizione breve** – Sintesi in 1–2 righe che rende la card leggibile “a colpo d’occhio” (obbligatoria nei template card).
+* **Descrizione dettagliata** – Contesto, vincoli e dettagli essenziali (obbligatoria nei template card).
+* **Criteri di accettazione (AC)** – Checklist verificabile che definisce quando una richiesta è corretta dal punto di vista utente/business (obbligatoria per le [STORY]; raccomandata quando applicabile su task/bug).
+* **Evidenze** – Prove del completamento/validazione (screenshot, link, log, verbali, output).
+* **DoD (Definition of Done)** – Criteri minimi per poter spostare una card in DONE:
+  * DoD di progetto (criteri generali) riportata in Descrizione Progetto (Allegato 5);
+  * DoD minima per tipo card riportata nei template card (Allegati 6–11).
 
 ---
 
@@ -275,40 +286,16 @@ Il processo di gestione progetti su Odoo prevede:
   * Ogni progetto ha la propria board con colonne standard:
 
     * **BACKLOG** – elementi noti ma non ancora prioritizzati o assegnati;
-    * **ASSIGNED** – card assegnate a una risorsa o a un team, in attesa di lavorazione;
+    * **ASSIGNED** – card assegnate a una risorsa o a un team, pronte alla lavorazione;
     * **IN PROGRESS** – card su cui è in corso il lavoro;
+    * **BLOCKED** – card ferme per impedimenti/dipendenze non risolte (obbligatorio indicare motivo + owner sblocco + next step + target date nella descrizione);
     * **DONE** – card completate e verificate.
   * Ogni progetto può, a sua volta, contenere card PROJECT che referenziano **sotto-progetti** o progetti collegati.
 
 * **Descrizione Progetto standardizzata (campo descrizione progetto Odoo)**
-  Per ogni progetto Odoo deve essere compilata una descrizione con la seguente struttura minima:
+  Per ogni progetto Odoo è **obbligatoria** la compilazione della Descrizione Progetto secondo il **Template ufficiale** (Allegato 5 – Template “Descrizione Progetto standardizzata”).
 
-  1. **Descrizione generale del progetto**
-
-     * Obiettivo principale.
-     * Cliente (se applicabile).
-     * Contesto e scope ad alto livello.
-
-  2. **Setup Scrum del progetto**
-
-     * **Durata Sprint:** es. “Sprint di 2 settimane (lun–ven)”.
-     * **Periodo di riferimento (se noto):** es. “Periodo previsto progetto: 2025-01 → 2025-06”.
-     * **Scrum Master:** nome/ruolo.
-     * **Project Manager / Product Owner:** nome/ruolo.
-     * **Frequenza e orario Daily:** es. “Daily: ogni giorno lavorativo alle 9:30”.
-     * **Cerimonie principali:** es. “Sprint Planning/Review/Retro a inizio/fine Sprint”.
-
-  3. **Riferimenti documentali**
-
-     * **Drive – Cartella progetto:** link alla directory principale su Google Drive.
-     * **Repository documentale di progetto (repo principale):** link al repository Git relativo alla documentazione del progetto.
-     * **GitHub Pages – Documentazione:** link alla pagina/sito documentazione progetto (se presente).
-     * **Odoo KB – Articolo di riferimento:** link all’articolo Knowledge Base che sintetizza il progetto (se esiste).
-
-  4. **Note operative (opzionale)**
-
-     * Regole particolari (es. orari di contatto con il cliente, vincoli di ambiente, dipendenze con altri progetti).
-     * Eventuali eccezioni rispetto al processo standard definito in questo SOP.
+> Il Template Allegato 5 è lo standard aziendale da clonare/incollare nel campo “Descrizione” del progetto Odoo; eventuali estensioni sono ammesse solo se non rimuovono i campi minimi.
 
 > Ove possibile, i link a Drive, al repository documentale e a GitHub Pages devono essere coerenti con i campi personalizzati configurati sul progetto Odoo (vedi §6).
 
@@ -351,41 +338,38 @@ Per **ogni progetto Odoo** deve esistere un **Documento di Progetto** aggiornato
     * deve essere presente nella cartella Drive di progetto;
     * può essere richiamato in KB Odoo con un breve articolo di sintesi.
 
-#### 5.3.3 Tipi di card e etichette
+#### 5.3.3 Tipi di card, etichette e Descrizione Card standardizzata
 
-La distinzione dei tipi di card avviene tramite **etichette standardizzate**:
+La distinzione dei tipi di card avviene tramite **etichette standardizzate**: [PROJECT], [EPIC], [STORY], [TASK] (inclusi sottotipi [BUG], [FIX], ecc.).
 
-* **[PROJECT]**
+**Regole obbligatorie (standard aziendale):**
+1) Ogni card deve avere **label corretta**.
+2) Il campo **“Descrizione” della card** deve essere compilato secondo il **template ufficiale del proprio tipo** (Allegati 6–11).
+3) Se la card è **tecnica**, è **obbligatorio** il collegamento al **ticket GitLab** (vedi §5.3.5) secondo quanto previsto nel template.
 
-  * Card che rappresenta un altro progetto Odoo.
-  * Deve contenere:
+**Template ufficiali (campo Descrizione card):**
+- Allegato 6 – Template “Descrizione Card [PROJECT]”
+- Allegato 7 – Template “Descrizione Card [EPIC]”
+- Allegato 8 – Template “Descrizione Card [STORY]”
+- Allegato 9 – Template “Descrizione Card [TASK]”
+- Allegato 10 – Template “Descrizione Card [BUG]”
+- Allegato 11 – Template “Descrizione Card [FIX]”
 
-    * riferimento al progetto Odoo (campo specifico o link);
-    * eventuali EPIC/TASK gestionali collegate (es. coordinamento, dipendenze).
+**Campi minimi richiesti (base comune), come da template:**
+- Descrizione breve (1–2 righe) + Descrizione dettagliata (contesto/vincoli)
+- Obiettivo / Output atteso
+- Evidenze (quando applicabile)
+- Link/Allegati utili (Drive/Doc/Repo/KB)
+- DoD minima per tipo card
+- (Se tecnico) GitLab Issue obbligatoria + eventuali MR/commit
 
-* **[EPIC]**
-
-  * Utilizzata sia nel Main Project sia nei progetti specifici.
-  * Una EPIC può rappresentare:
-
-    * un potenziale progetto (fase iniziale, prima di contratto);
-    * un’iniziativa di alto livello che aggrega più Story.
-
-* **[STORY]**
-
-  * Requisito funzionale o incremento di valore.
-  * Deve includere:
-
-    * descrizione chiara (come utente… voglio… per…);
-    * criteri di accettazione;
-    * Sprint e Story Point (quando stimati).
-
-* **[TASK] / [BUG] / [FIX]**
-
-  * Attività operative, tecniche o non tecniche.
-  * Per TASK tecnici:
-
-    * obbligatorio il collegamento al ticket GitLab (vedi §5.3.5).
+**Vincoli specifici per tipo:**
+- [STORY]: user story + criteri di accettazione (obbligatori); Sprint e Story Point quando pianificata/stimata.
+- [BUG]: riproduzione + atteso vs attuale + evidenze; verifica post-fix; GitLab obbligatorio se tecnico.
+- [FIX]: problema/debito tecnico + scope tecnico + misure/metriche; GitLab obbligatorio se tecnico.
+- [TASK]: checklist operativa; GitLab obbligatorio se tecnico.
+- [EPIC]: outcome + scope + DoD EPIC + collegamenti a story/task.
+- [PROJECT]: link progetto Odoo collegato + motivo collegamento + milestone/next step.
 
 > Le etichette devono essere mantenute **coerenti** su tutti i progetti per evitare ambiguità.
 
@@ -487,6 +471,74 @@ Per ogni **nuovo progetto Odoo ufficializzato** (interno o cliente) devono esser
      * I **repository di codice** devono rispettare gli standard e le convenzioni definiti nei SOP di sviluppo (**SOP-DEV-01**, **SOP-DEV-02** e, quando disponibile, SOP specifico per naming e struttura repo di codice).
      * La **struttura interna del repository documentale** (cartelle `docs/`, `spec/`, `adr/`, ecc.) sarà definita in **SOP-DOC-03 – Struttura standard dei repository documentali di progetto**.
 
+#### 5.3.7 Regole minime di transizione sulle colonne (gates)
+
+Le card transitano tra BACKLOG → ASSIGNED → IN PROGRESS → (se necessario) BLOCKED → IN PROGRESS → DONE.
+La colonna BLOCKED può essere raggiunta da ASSIGNED o IN PROGRESS quando l’attività non può avanzare per impedimenti esterni o dipendenze.
+
+Per garantire coerenza e qualità, si applicano i seguenti criteri minimi:
+
+- **BACKLOG**
+  - La card deve avere label corretta.
+  - La Descrizione deve essere compilata secondo il template del tipo (Allegati 6–11).
+
+- **ASSIGNED**
+  - Owner assegnato; priorità e dipendenze note.
+  - Per **[STORY]**: criteri di accettazione presenti.
+  - Per attività tecniche: GitLab Issue creata o creata immediatamente (vedi §5.3.5).
+
+- **IN PROGRESS**
+  - Aggiornamento note/avanzamento.
+  - Per attività tecniche: lavorazione tracciata in GitLab (issue/MR/CI).
+
+- **BLOCKED**
+  - Condizione: la card non può avanzare per impedimento esterno/dipendenza non risolta (cliente, accessi, ambiente, decisione, terze parti).
+  - Requisiti minimi in card (nel campo Descrizione, coerente col template del tipo):
+    - Motivo del blocco (chiaro e specifico)
+    - Owner dell’azione di sblocco (chi fa cosa per rimuovere l’impedimento)
+    - Next step (azione concreta)
+    - Target date di sblocco o “da definire” con motivazione
+    - Eventuali link/evidenze (mail, ticket esterni, log, screenshot)
+  - Regola: riesaminare il blocco nei momenti di sincronizzazione (Daily/triage) e aggiornare target/next step.
+
+- **DONE**
+  - DoD minima del tipo card rispettata (Allegati 6–11) + evidenze.
+  - Per attività tecniche: issue chiusa + eventuali MR/commit + CI/test ok oppure motivazione documentata.
+#### 5.3.7 Regole minime di transizione sulle colonne (gates)
+
+Le card transitano tra BACKLOG → ASSIGNED → IN PROGRESS → (se necessario) BLOCKED → IN PROGRESS → DONE.
+La colonna BLOCKED può essere raggiunta da ASSIGNED o IN PROGRESS quando l’attività non può avanzare per impedimenti esterni o dipendenze.
+
+Per garantire coerenza e qualità, si applicano i seguenti criteri minimi:
+
+- **BACKLOG**
+  - La card deve avere label corretta.
+  - La Descrizione deve essere compilata secondo il template del tipo (Allegati 6–11).
+
+- **ASSIGNED**
+  - Owner assegnato; priorità e dipendenze note.
+  - Per **[STORY]**: criteri di accettazione presenti.
+  - Per attività tecniche: GitLab Issue creata o creata immediatamente (vedi §5.3.5).
+
+- **IN PROGRESS**
+  - Aggiornamento note/avanzamento.
+  - Per attività tecniche: lavorazione tracciata in GitLab (issue/MR/CI).
+
+- **BLOCKED**
+  - Condizione: la card non può avanzare per impedimento esterno/dipendenza non risolta (cliente, accessi, ambiente, decisione, terze parti).
+  - Requisiti minimi in card (nel campo Descrizione, coerente col template del tipo):
+    - Motivo del blocco (chiaro e specifico)
+    - Owner dell’azione di sblocco (chi fa cosa per rimuovere l’impedimento)
+    - Next step (azione concreta)
+    - Target date di sblocco o “da definire” con motivazione
+    - Eventuali link/evidenze (mail, ticket esterni, log, screenshot)
+  - Regola: riesaminare il blocco nei momenti di sincronizzazione (Daily/triage) e aggiornare target/next step.
+
+- **DONE**
+  - DoD minima del tipo card rispettata (Allegati 6–11) + evidenze.
+  - Per attività tecniche: issue chiusa + eventuali MR/commit + CI/test ok oppure motivazione documentata.
+
+
 ---
 
 ## 6. Strumenti e sistemi utilizzati
@@ -497,7 +549,7 @@ Per ogni **nuovo progetto Odoo ufficializzato** (interno o cliente) devono esser
 
     * Main Project;
     * progetti specifici (interni e cliente);
-    * board Scrum (BACKLOG, ASSIGNED, IN PROGRESS, DONE);
+    * board Scrum (BACKLOG, ASSIGNED, IN PROGRESS, BLOCKED, DONE);
     * Sprint e Story Point (campi personalizzati);
     * etichette di tipo card (PROJECT, EPIC, STORY, TASK, BUG, FIX);
     * **Descrizione Progetto standardizzata**, contenente meta-informazioni Scrum e riferimenti documentali;
@@ -587,6 +639,14 @@ Per ogni **nuovo progetto Odoo ufficializzato** (interno o cliente) devono esser
   * Documentazione dispersa o non rintracciabile.
   * Impatto: perdita di informazioni, difficoltà in audit interni/esterni e nel passaggio di consegne.
 
+* **Rischio R7 – Descrizioni card non conformi ai template**
+  * Card create senza i campi minimi (descrizione breve/dettagliata, DoD, evidenze, link).
+  * Impatto: perdita di standard, ambiguità, aumento rework e tempi di onboarding.
+
+* **Rischio R8 – Spostamento in DONE senza DoD/Evidenze**
+  * Card chiuse senza validazione o prove.
+  * Impatto: qualità percepita bassa, regressioni, contestazioni e perdita affidabilità reporting.
+
 ### 7.2 Controlli e misure di mitigazione
 
 * Controlli periodici (es. mensili) su:
@@ -600,7 +660,8 @@ Per ogni **nuovo progetto Odoo ufficializzato** (interno o cliente) devono esser
     * cartella Drive di progetto;
     * repository documentale (`{{codice_progetto_minuscolo}}-docs`);
     * Documento di Progetto aggiornato (almeno in versione iniziale).
-
+  * conformità della Descrizione card ai template (Allegati 6–11);
+  * verifica dei DONE: presenza DoD spuntata/rispettata + evidenze/link.
 * Revisioni periodiche del presente SOP e degli articoli KB associati (SOP-KB-01).
 
 * Possibile introduzione di checklist di controllo, ad es.:
@@ -629,6 +690,9 @@ Per ogni **nuovo progetto Odoo ufficializzato** (interno o cliente) devono esser
 * **KPI6 – % progetti con Documento di Progetto presente e aggiornato**
   Controlla quanti progetti hanno almeno una versione del Documento di Progetto conforme ai template allegati.
 
+* **KPI7 – % card con descrizione conforme al template del tipo**
+  Misura adozione standard (Allegati 6–11).
+* 
 ---
 
 ## 8. Gestione, revisione e pubblicazione del SOP
@@ -671,33 +735,37 @@ Ogni revisione deve:
 
 ---
 
-## 9. Allegati (opzionale)
+## 9. Allegati
 
-*Da definire e pubblicare nel repository dedicato alla documentazione SOP.*
+Gli allegati sono parte integrante del SOP e devono essere pubblicati nel repository dedicato alla documentazione SOP.
 
-Esempi di allegati previsti:
+- **Allegato 1 – Diagramma di flusso del processo multi-progetto (Main Project ↔ Progetti specifici)**
+- **Allegato 2 – Matrice RACI dettagliata per ruoli PMO / PM / Dev**
+- **Allegato 3 – Checklist apertura progetto Odoo**
+  Include verifica di:
+  - creazione progetto in Odoo;
+  - compilazione minima Descrizione Progetto;
+  - creazione cartella Drive;
+  - creazione repository documentale `{{codice_progetto_minuscolo}}-docs`;
+  - creazione Documento di Progetto (bozza iniziale).
 
-* **Allegato 1 – Diagramma di flusso del processo multi-progetto (Main Project ↔ Progetti specifici)**
-* **Allegato 2 – Matrice RACI dettagliata per ruoli PMO / PM / Dev**
-* **Allegato 3 – Checklist apertura progetto Odoo**
+- **Allegato 4 – Checklist collegamento Odoo ↔ GitLab**
 
-  * Include verifica di:
+- **Allegato 5 – Template ufficiale “Descrizione Progetto standardizzata” (campo descrizione progetto Odoo)**
 
-    * creazione progetto in Odoo;
-    * compilazione minima Descrizione Progetto;
-    * creazione cartella Drive;
-    * creazione repository documentale `{{codice_progetto_minuscolo}}-docs`;
-    * creazione Documento di Progetto (bozza iniziale).
-* **Allegato 4 – Checklist collegamento Odoo ↔ GitLab**
-* **Allegato 5 – Template testuale per Descrizione Progetto standardizzata**
+Template ufficiali “Descrizione Card” (campo descrizione della card Odoo):
+- **Allegato 6 – Template “Descrizione Card [PROJECT]”**
+- **Allegato 7 – Template “Descrizione Card [EPIC]”**
+- **Allegato 8 – Template “Descrizione Card [STORY]”**
+- **Allegato 9 – Template “Descrizione Card [TASK]”**
+- **Allegato 10 – Template “Descrizione Card [BUG]”**
+- **Allegato 11 – Template “Descrizione Card [FIX]”**
 
-  * Piccolo snippet copiabile/incollabile nella descrizione progetto Odoo.
-* **Allegato 6 – Template “Documento di Progetto – Progetto Esterno (Cliente)”**
+Template Documento di Progetto:
+- **Allegato 12 – Template “Documento di Progetto – Progetto Esterno (Cliente)”** (Markdown + DOCX)
+- **Allegato 13 – Template “Documento di Progetto – Progetto Interno”** (Markdown + DOCX)
 
-  * Versione Markdown e DOCX, come definito nei template ufficiali dell’azienda.
-* **Allegato 7 – Template “Documento di Progetto – Progetto Interno”**
-
-  * Versione Markdown e DOCX, come definito nei template ufficiali dell’azienda.
+Nota di continuità: nella versione 1.0 gli allegati 6–7 erano i template Documento di Progetto; nella versione 1.1 tali template sono rinumerati come Allegati 12–13 per inserire i nuovi template card (Allegati 6–11).
 
 ---
 
@@ -705,4 +773,4 @@ Esempi di allegati previsti:
 
 | Versione | Data         | Descrizione modifica                                                                                | Redatto da      | Verificato da   | Approvato da  |
 | -------- | ------------ | --------------------------------------------------------------------------------------------------- | --------------- | --------------- | ------------- |
-| 1.0      | *[da comp.]* | Prima emissione del SOP-PRJ-01, inclusa definizione Documenti di Progetto, repo/cartolette standard | *[PMO / Ruolo]* | *[CTO / Ruolo]* | *[Direzione]* |
+| 1.0      | *[da comp.]* | Prima emissione del SOP-PRJ-01, inclusa definizione Documenti di Progetto, repo/cartolette standard | *[PMO / Ruolo]* | *[CTO / Ruolo]* | *[Direzione]* |_
